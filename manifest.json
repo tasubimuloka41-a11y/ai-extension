@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Gemma 3 12B AI Assistant",
   "version": "1.0.0",
-  "description": "Автономный AI ассистент с интеграцией Gemma 3 12B, Google Drive и возможностью работы со ссылками",
+  "description": "Автономный AI ассистент с интегрированной Gemma 3 12B, Google Drive и возможностью работы со ссылками",
   "permissions": [
     "storage",
     "tabs",
@@ -17,11 +17,13 @@
     "https://api.telegram.org/*"
   ],
   "action": {
-    "default_popup": "popup.html",
     "default_title": "Gemma AI Assistant"
   },
   "background": {
     "service_worker": "background.js"
+  },
+  "side_panel": {
+    "default_path": "panel.html"
   },
   "content_scripts": [
     {
@@ -36,4 +38,3 @@
     }
   ]
 }
-
