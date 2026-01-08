@@ -9,22 +9,34 @@
 <body>
   <div class="panel-container">
     <div class="panel-header">
-      <h2>Просмотр ссылки</h2>
+      <h2>Просмотр ссылок</h2>
       <div class="panel-actions">
+        <button id="colabBtn" class="panel-btn" title="Открыть Google Colab">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M19 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7"></path>
+            <polyline points="13 2 13 8 19 2"></polyline>
+          </svg>
+        </button>
+        <button id="agentToggleBtn" class="panel-btn" title="Автономный агент">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="1"></circle>
+            <path d="M12 1v6m0 6v6M4.22 4.22l4.24 4.24m3.08 3.08l4.24 4.24M1 12h6m6 0h6M4.22 19.78l4.24-4.24m3.08-3.08l4.24-4.24M19.78 19.78l-4.24-4.24m-3.08-3.08l-4.24-4.24"></path>
+          </svg>
+        </button>
+        <button id="modelSelectBtn" class="panel-btn" title="Выбрать модель">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+          </svg>
+        </button>
         <button id="backBtn" class="panel-btn" title="Назад">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M19 12H5M12 19l-7-7 7-7"/>
+            <path d="M19 12H5M12 19l-7-7 7-7"></path>
           </svg>
         </button>
         <button id="refreshBtn" class="panel-btn" title="Обновить">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8M3 21V15M21 3v6M21 21a9 9 0 0 1-9-9 9.75 9.75 0 0 1-6.74-2.74L3 16"/>
-          </svg>
-        </button>
-        <button id="closeBtn" class="panel-btn" title="Закрыть">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <line x1="18" y1="6" x2="6" y2="18"></line>
-            <line x1="6" y1="6" x2="18" y2="18"></line>
+            <polyline points="23 4 23 10 17 10"></polyline>
+            <path d="M20.49 15a9 9 0 1 1 1.12-5.49"></path>
           </svg>
         </button>
       </div>
@@ -40,4 +52,3 @@
   <script src="panel.js"></script>
 </body>
 </html>
-
