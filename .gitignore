@@ -1,0 +1,78 @@
+# Игнорируемые файлы для Git
+
+# Временные файлы
+*.tmp
+*.temp
+*.log
+*.swp
+*.swo
+*~
+
+# Системные файлы
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Файлы редакторов
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Node modules (если будут)
+node_modules/
+package-lock.json
+yarn.lock
+
+# Собранные файлы
+dist/
+build/
+
+# Локальные настройки
+.env
+.env.local
+config.local.json
+
+# Иконки (если не созданы)
+icons/*.png
+!icons/README.md
+
+# Временные файлы проекта
+*.bak
+*.backup
+
+# Файлы с личными данными
+*_personal*
+*_private*
+
+# Старые сохраненные ресурсы (не нужны для проекта)
+saved_resource*.html
+*.Без названия
+9554678841295205
+adsct*
+tag*
+vcd*
+js
+thumbnail
+
+# CSS файлы от других проектов (не нужны)
+IntlPhoneInput-*.css
+katex-*.css
+mapbox-*.css
+spa-shell-*.css
+StepRenderer-*.css
+
+# JS файлы от других проектов
+amazon.js.*
+amzn.js.*
+fbevents.js.*
+google-tag.js.*
+meta.js.*
+ntp.html-*.js.*
+pixel.js.*
+podscribe.js.*
+reddit.js.*
+tag.js.*
+uwt.js.*
+x.js.*
+

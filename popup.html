@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gemma AI Assistant</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Gemma 3 12B AI</h1>
+      <div class="header-actions">
+        <button id="colabBtn" class="icon-btn" title="Открыть Google Colab">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M16.941 4.976a7.033 7.033 0 0 0-4.93 2.117L7.12 10.6a1.003 1.003 0 0 0 0 1.415l4.891 4.891a7.033 7.033 0 0 0 2.118 4.93 6.998 6.998 0 0 0 9.9-9.9 7.033 7.033 0 0 0-2.118-4.93zm-1.412 7.557l-2.172-2.172 2.172-2.172a5.015 5.015 0 0 1 1.768 1.768zm-5.656-3.536l2.172 2.172L9.713 14.36a5.015 5.015 0 0 1-1.768-1.768zm8.485 2.828a5.015 5.015 0 0 1-1.768 1.768l-2.172-2.172 2.172-2.172a5.015 5.015 0 0 1 1.768 1.768zM4.976 7.059a7.033 7.033 0 0 0-2.117 4.93 6.998 6.998 0 0 0 9.9 9.9 7.033 7.033 0 0 0 4.93-2.117L16.88 13.4a1.003 1.003 0 0 0 0-1.415l-4.891-4.891a7.033 7.033 0 0 0-4.93-2.118 6.998 6.998 0 0 0-6.083 6.083zm1.768 1.768a5.015 5.015 0 0 1 1.768-1.768l2.172 2.172L8.904 12.36a5.015 5.015 0 0 1-1.768-1.768z"/>
+          </svg>
+        </button>
+        <button id="agentToggleBtn" class="icon-btn" title="Автономный агент">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M12 6v6l4 2"></path>
+          </svg>
+        </button>
+        <button id="modelSelectBtn" class="icon-btn" title="Выбрать модель">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+          </svg>
+        </button>
+        <button id="telegramBtn" class="icon-btn" title="Telegram бот">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.161c-.169 1.858-.896 6.375-1.266 8.453-.156.855-.463 1.141-.76 1.171-.64.051-1.125-.422-1.744-.827-3.08-2.034-4.814-3.301-6.097-5.293-.27-.405-.96-1.405-1.001-1.947-.01-.184.3-.371.826-.561 3.239-1.423 5.389-2.361 6.405-2.77 2.984-1.23 3.608-.754 3.98.707.19.74.128 2.193-.108 3.38z"/>
+          </svg>
+        </button>
+        <button id="settingsBtn" class="icon-btn" title="Настройки">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 15.5A3.5 3.5 0 0 1 8.5 12A3.5 3.5 0 0 1 12 8.5a3.5 3.5 0 0 1 3.5 3.5a3.5 3.5 0 0 1-3.5 3.5m7.43-2.53c.04-.32.07-.64.07-.97c0-.33-.03-.66-.07-1l2.11-1.63c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.31-.61-.22l-2.49 1c-.52-.4-1.06-.73-1.69-.98l-.37-2.65A.506.506 0 0 0 14 2h-4c-.25 0-.46.18-.5.42l-.37 2.65c-.63.25-1.17.59-1.69.98l-2.49-1c-.22-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64L4.57 11c-.04.34-.07.67-.07 1c0 .33.03.65.07.97l-2.11 1.66c-.19.15-.25.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1.01c.52.4 1.06.73 1.69.98l.37 2.65c.04.24.25.42.5.42h4c.25 0 .46-.18.5-.42l.37-2.65c.63-.25 1.17-.59 1.69-.98l2.49 1.01c.22.08.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.66Z"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="status-bar">
+      <span id="statusText" class="status-text">Готов к работе</span>
+      <div class="status-right">
+        <div id="currentModel" class="model-info">
+          <span id="modelName">gemma3:12b</span>
+        </div>
+        <div id="telegramStatus" class="telegram-status hidden">
+          <span class="telegram-dot"></span>
+          <span>Telegram</span>
+        </div>
+        <div id="agentStatus" class="agent-status">
+          <span class="agent-indicator"></span>
+          <span id="agentStatusText">Агент</span>
+        </div>
+      </div>
+    </div>
+
+    <div id="telegramPanel" class="telegram-panel hidden">
+      <div class="telegram-header">
+        <h3>Telegram бот</h3>
+        <button id="closeTelegramPanel" class="close-btn">×</button>
+      </div>
+      <div class="telegram-content">
+        <div class="telegram-input-group">
+          <label>Токен бота:</label>
+          <input type="password" id="telegramTokenInput" class="telegram-input" placeholder="Введите токен бота от @BotFather">
+          <button id="saveTelegramTokenBtn" class="telegram-save-btn">Сохранить</button>
+        </div>
+        <div id="telegramBotInfo" class="telegram-bot-info hidden">
+          <div class="bot-info-item">
+            <span class="bot-info-label">Имя бота:</span>
+            <span id="botName" class="bot-info-value">-</span>
+          </div>
+          <div class="bot-info-item">
+            <span class="bot-info-label">Username:</span>
+            <span id="botUsername" class="bot-info-value">-</span>
+          </div>
+        </div>
+        <div class="telegram-controls">
+          <button id="startTelegramBtn" class="telegram-control-btn start">▶ Запустить</button>
+          <button id="stopTelegramBtn" class="telegram-control-btn stop hidden">⏹ Остановить</button>
+        </div>
+        <div id="telegramMessages" class="telegram-messages">
+          <div class="telegram-message-info">Сообщения от бота будут отображаться здесь</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="modelSelector" class="model-selector hidden">
+      <div class="model-selector-header">
+        <h3>Выбор модели</h3>
+        <button id="closeModelSelector" class="close-btn">×</button>
+      </div>
+      <div class="model-selector-content">
+        <div id="modelsList" class="models-list">
+          <div class="loading-models">Загрузка моделей...</div>
+        </div>
+        <div class="model-selector-actions">
+          <button id="refreshModelsBtn" class="refresh-btn">🔄 Обновить список</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="agentPanel" class="agent-panel hidden">
+      <div class="agent-header">
+        <h3>Автономный агент</h3>
+        <div class="agent-controls">
+          <button id="agentStopBtn" class="agent-btn stop" title="Остановить">⏹</button>
+          <button id="agentExitBtn" class="agent-btn exit" title="Выйти из режима агента">← Назад</button>
+          <button id="agentClearBtn" class="agent-btn" title="Очистить историю">🗑</button>
+        </div>
+      </div>
+      <div class="agent-stats">
+        <div class="stat-item">
+          <span class="stat-label">Задач в очереди:</span>
+          <span id="queueCount" class="stat-value">0</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">Посещено URL:</span>
+          <span id="visitedCount" class="stat-value">0</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">Скачано файлов:</span>
+          <span id="filesCount" class="stat-value">0</span>
+        </div>
+      </div>
+      <div class="memory-stats">
+        <div class="memory-header">
+          <h4>Память и обучение</h4>
+          <button id="memoryStatsBtn" class="memory-btn" title="Статистика памяти">📊</button>
+        </div>
+        <div class="memory-info">
+          <div class="memory-stat-item">
+            <span class="memory-label">Опыт в памяти:</span>
+            <span id="memoryExperiencesCount" class="memory-value">0</span>
+          </div>
+          <div class="memory-stat-item">
+            <span class="memory-label">Успешность:</span>
+            <span id="memorySuccessRate" class="memory-value">0%</span>
+          </div>
+        </div>
+        <div class="memory-controls">
+          <button id="clearMemoryBtn" class="memory-control-btn" title="Очистить память">🗑 Очистить</button>
+          <button id="exportMemoryBtn" class="memory-control-btn" title="Экспорт памяти">💾 Экспорт</button>
+        </div>
+      </div>
+      <div class="agent-quick-actions">
+        <button class="quick-action-btn" data-action="analyze_url">Анализ URL</button>
+        <button class="quick-action-btn" data-action="follow_links">Переход по ссылкам</button>
+        <button class="quick-action-btn" data-action="search_analyze">Поиск и анализ</button>
+        <button class="quick-action-btn" data-action="download_file">Скачать файл</button>
+      </div>
+      <div class="autonomous-task-section">
+        <h4>Автономное выполнение в браузере</h4>
+        <div class="autonomous-input-group">
+          <input 
+            type="text" 
+            id="autonomousTaskInput" 
+            class="autonomous-input" 
+            placeholder="Опишите задачу (например: найти информацию о AI, заполнить форму)"
+          />
+          <input 
+            type="text" 
+            id="autonomousTaskUrl" 
+            class="autonomous-input-url" 
+            placeholder="URL (опционально, или используйте текущую вкладку)"
+          />
+          <button id="executeAutonomousTaskBtn" class="autonomous-execute-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="5 3 19 12 5 21 5 3"></polygon>
+            </svg>
+            Выполнить автономно
+          </button>
+        </div>
+        <div id="autonomousTaskStatus" class="autonomous-status hidden"></div>
+      </div>
+    </div>
+
+    <div class="chat-container">
+      <div id="messages" class="messages"></div>
+      <div class="input-container">
+        <div class="input-wrapper">
+          <button id="fileUploadBtn" class="upload-btn" title="Загрузить файл">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+          </button>
+          <textarea 
+            id="messageInput" 
+            class="message-input" 
+            placeholder="Введите ваш запрос..."
+            rows="4"
+          ></textarea>
+          <button id="sendBtn" class="send-btn" title="Отправить">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="22" y1="2" x2="11" y2="13"></line>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+            </svg>
+          </button>
+        </div>
+        <input type="file" id="fileInput" multiple style="display: none;">
+      </div>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
+
