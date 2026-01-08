@@ -842,3 +842,13 @@ chrome.runtime.onInstalled.addListener(() => {
 chrome.runtime.onStartup.addListener(() => {
   initAgent();
 });
+
+// Открывать боковую панель при клике на иконку расширения
+chrome.action.onClicked.addListener(async (tab) => {
+  try {
+    await chrome.sidePanel.open({ tabId: tab.id });
+  } catch (error) {
+    console.error('Ошибка открытия side panel:', error);
+  }
+});
+
